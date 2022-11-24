@@ -24,6 +24,9 @@ const connect = () => {
 //middlewares
 app.use(cookieParser())
 app.use(express.json())
+app.get('/', (req, res) => {
+  res.send('<span>Message: Success</span><p>Youtube BS Demo</p>');
+})
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/videos', videoRoutes)
