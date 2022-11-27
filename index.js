@@ -6,6 +6,8 @@ import userRoutes from './routes/users.js'
 import videoRoutes from './routes/videos.js'
 import commentRoutes from './routes/comments.js'
 import authRoutes from './routes/auth.js'
+import path from 'path'
+
 
 const app = express()
 dotenv.config()
@@ -23,10 +25,15 @@ const connect = () => {
 
 //middlewares
 app.use(cookieParser())
+app.use(express.static("public"))
 app.use(express.json())
+
 app.get('/', (req, res) => {
-  res.send('<span>Message: Success</span><p>Youtube BS Demo</p>');
-})
+  res.send('status: OK')
+});
+
+
+
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/videos', videoRoutes)
